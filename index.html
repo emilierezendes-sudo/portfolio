@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #F7F4EE; }
+  body { -webkit-font-smoothing: antialiased; }
+  a { color: #1E4B42; text-decoration: none; }
+  a:hover { color: #B4552F; }
+  ::selection { background: #DCE6E1; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+
+<div style="min-height:100vh;background:#F7F4EE;font-family:'IBM Plex Sans',system-ui,sans-serif;color:#1B1A17">
+
+  <header style="position:sticky;top:0;z-index:50;background:rgba(247,244,238,0.9);backdrop-filter:blur(12px);border-bottom:1px solid #E4DED2">
+    <div style="max-width:1160px;margin:0 auto;padding:0 clamp(20px,5vw,48px);height:70px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <button onClick="{{ goHome }}" style="display:flex;align-items:baseline;gap:9px;background:none;border:0;padding:0;cursor:pointer;font-family:Newsreader,serif;font-size:20px;letter-spacing:-0.01em;color:#1B1A17">
+        <span>Emilie Rezendes</span>
+        <span style="width:5px;height:5px;border-radius:50%;background:#B4552F;display:inline-block"></span>
+      </button>
+
+      <nav style="display:flex;align-items:center;gap:4px">
+        <button onClick="{{ goHome }}" style="position:relative;background:none;border:0;cursor:pointer;padding:8px 14px;font:500 14px/1 'IBM Plex Sans';color:#1B1A17" style-hover="color:#1E4B42">
+          Home
+          <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}"><span style="position:absolute;left:14px;right:14px;bottom:0;height:2px;background:#1E4B42"></span></sc-if>
+        </button>
+        <button onClick="{{ goExp }}" style="position:relative;background:none;border:0;cursor:pointer;padding:8px 14px;font:500 14px/1 'IBM Plex Sans';color:#1B1A17" style-hover="color:#1E4B42">
+          Experience
+          <sc-if value="{{ isExp }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:14px;right:14px;bottom:0;height:2px;background:#1E4B42"></span></sc-if>
+        </button>
+        <button onClick="{{ goProj }}" style="position:relative;background:none;border:0;cursor:pointer;padding:8px 14px;font:500 14px/1 'IBM Plex Sans';color:#1B1A17" style-hover="color:#1E4B42">
+          Projects
+          <sc-if value="{{ isProj }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:14px;right:14px;bottom:0;height:2px;background:#1E4B42"></span></sc-if>
+        </button>
+        <button onClick="{{ goResume }}" style="position:relative;background:none;border:0;cursor:pointer;padding:8px 14px;font:500 14px/1 'IBM Plex Sans';color:#1B1A17" style-hover="color:#1E4B42">
+          Resume
+          <sc-if value="{{ isResume }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;left:14px;right:14px;bottom:0;height:2px;background:#1E4B42"></span></sc-if>
+        </button>
+      </nav>
+
+      <div style="display:flex;align-items:center;gap:8px">
+        <a href="https://www.linkedin.com/in/emilie-rezendes" target="_blank" rel="noreferrer" title="LinkedIn" style="width:36px;height:36px;border:1px solid #D8D1C3;border-radius:50%;display:flex;align-items:center;justify-content:center" style-hover="border-color:#1E4B42;background:#EDF1EF">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#1E4B42" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C20.4 8.75 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.56-2.3 3.2V21H9z"></path></svg>
+        </a>
+        <a href="mailto:emilie@rezendes.com" style="display:inline-flex;align-items:center;gap:8px;background:#1E4B42;color:#F7F4EE;padding:10px 18px;border-radius:999px;font:500 14px/1 'IBM Plex Sans'" style-hover="background:#173C35;color:#F7F4EE">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 7l10 6 10-6"></path></svg>
+          Email me
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════ HOME ══════════════ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <main>
+
+        <section style="max-width:1160px;margin:0 auto;padding:clamp(56px,8vw,104px) clamp(20px,5vw,48px) 0">
+      <div style="display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,0.65fr);gap:clamp(32px,6vw,72px);align-items:end">
+        <div>
+          <p style="margin:0 0 22px;font:600 11px/1 'IBM Plex Sans';letter-spacing:0.18em;text-transform:uppercase;color:#1E4B42">BA Technical Communication: Content Strategy · UNT</p>
+          <h1 style="margin:0;font-family:Newsreader,serif;font-weight:300;font-size:clamp(48px,8.2vw,104px);line-height:0.94;letter-spacing:-0.025em;color:#1B1A17">Emilie<br>Rezendes</h1>
+          <p style="margin:26px 0 0;max-width:30ch;font-family:Newsreader,serif;font-size:clamp(21px,2.4vw,29px);line-height:1.4;color:#3A3630;font-style:italic;font-weight:300">Technical writer and content strategist in the making.</p>
+          <p style="margin:22px 0 0;max-width:56ch;font:400 17px/1.68 'IBM Plex Sans';color:#4A463E;text-wrap:pretty">I make complicated things easier to read. Right now that means auditing university websites, turning interviews into donor stories, and producing content for a small travel company — plus a 4.0 at UNT along the way. I'm looking for technical writing and content strategy work where research comes before opinion.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:34px">
+            <a href="mailto:emilie@rezendes.com" style="display:inline-flex;align-items:center;gap:9px;background:#1E4B42;color:#F7F4EE;padding:14px 24px;border-radius:999px;font:500 15px/1 'IBM Plex Sans'" style-hover="background:#173C35;color:#F7F4EE">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 7l10 6 10-6"></path></svg>
+              Email me
+            </a>
+            <a href="https://www.linkedin.com/in/emilie-rezendes" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:9px;border:1px solid #D8D1C3;color:#1B1A17;padding:14px 22px;border-radius:999px;font:500 15px/1 'IBM Plex Sans'" style-hover="border-color:#1E4B42;background:#EDF1EF;color:#1B1A17">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="#1E4B42" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C20.4 8.75 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.56-2.3 3.2V21H9z"></path></svg>
+              LinkedIn
+            </a>
+            <button onClick="{{ goResume }}" style="background:none;border:0;cursor:pointer;padding:14px 8px;font:500 15px/1 'IBM Plex Sans';color:#1B1A17;text-decoration:underline;text-decoration-color:#C9C2B3;text-underline-offset:5px" style-hover="color:#B4552F">Download resume</button>
+          </div>
+        </div>
+        <div style="position:relative;aspect-ratio:3/4;border-radius:6px;overflow:hidden;background:#EAE4D8">
+          <image-slot id="portrait" shape="rect" placeholder="Drop your headshot (portrait, min 900px wide)"></image-slot>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills (shared) -->
+    <section style="max-width:1160px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,48px) 0">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-bottom:18px;border-bottom:1px solid #E4DED2">
+        <h2 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:clamp(28px,3.4vw,40px);letter-spacing:-0.015em">Skills</h2>
+        <p style="margin:0;font:400 14px/1.5 'IBM Plex Sans';color:#7A756A">What I bring to a content team</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:1px;background:#E4DED2;border:1px solid #E4DED2;border-top:0">
+        <div style="background:#FDFCF9;padding:28px 24px 30px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.7" aria-hidden="true"><path d="M12 3v18M5 8h14M7 21h10"></path></svg>
+            <h3 style="margin:0;font:600 12px/1 'IBM Plex Sans';letter-spacing:0.13em;text-transform:uppercase;color:#1E4B42">Core</h3>
+          </div>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Content strategy</li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Technical &amp; instructional writing</li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Technical editing</li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Web &amp; UX copy</li>
+          </ul>
+        </div>
+        <div style="background:#FDFCF9;padding:28px 24px 30px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.7" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M16.5 16.5L21 21"></path></svg>
+            <h3 style="margin:0;font:600 12px/1 'IBM Plex Sans';letter-spacing:0.13em;text-transform:uppercase;color:#1E4B42">Research &amp; analysis</h3>
+          </div>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Stakeholder interviews</li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Content audits</li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Google Analytics</li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Personas &amp; editorial calendars</li>
+          </ul>
+        </div>
+        <div style="background:#FDFCF9;padding:28px 24px 30px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18M9 21V9"></path></svg>
+            <h3 style="margin:0;font:600 12px/1 'IBM Plex Sans';letter-spacing:0.13em;text-transform:uppercase;color:#1E4B42">Tools</h3>
+          </div>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Canva &amp; Microsoft Word <span style="color:#8A857A">— advanced</span></li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">PowerPoint, Excel, Trello <span style="color:#8A857A">— intermediate</span></li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">WordPress, Asana, HTML, DITA <span style="color:#8A857A">— working</span></li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">APA &amp; Chicago style</li>
+          </ul>
+        </div>
+        <div style="background:#FDFCF9;padding:28px 24px 30px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.7" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z"></path></svg>
+            <h3 style="margin:0;font:600 12px/1 'IBM Plex Sans';letter-spacing:0.13em;text-transform:uppercase;color:#1E4B42">Also</h3>
+          </div>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px">
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Grant &amp; donor writing</li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Blog &amp; web publishing</li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Event planning</li>
+            <li style="font:400 16px/1.4 'IBM Plex Sans';color:#2E2A24">Visual communication design</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured work (shared) -->
+    <section style="max-width:1160px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,5vw,48px) 0">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-bottom:26px;border-bottom:1px solid #E4DED2">
+        <h2 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:clamp(28px,3.4vw,40px);letter-spacing:-0.015em">Selected work</h2>
+        <button onClick="{{ goProj }}" style="background:none;border:0;cursor:pointer;padding:0;font:500 14px/1 'IBM Plex Sans';color:#1E4B42;display:inline-flex;align-items:center;gap:7px" style-hover="color:#B4552F">
+          All projects
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(20px,3vw,32px);margin-top:32px">
+        <button onClick="{{ goProj }}" style="text-align:left;background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;overflow:hidden;cursor:pointer;padding:0;display:flex;flex-direction:column" style-hover="border-color:#1E4B42">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#EAE4D8">
+            <image-slot id="home-feat-1" shape="rect" src="assets/audit-view.png" placeholder="UNT content audit — wireframe or audit spreadsheet"></image-slot>
+          </div>
+          <div style="padding:26px 24px 28px">
+            <p style="margin:0 0 12px;font:600 11px/1 'IBM Plex Sans';letter-spacing:0.16em;text-transform:uppercase;color:#B4552F">Case study 01 · Content strategy</p>
+            <h3 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:26px;line-height:1.2;letter-spacing:-0.01em">Content Strategy &amp; Website Audit</h3>
+            <p style="margin:12px 0 0;font:400 16px/1.6 'IBM Plex Sans';color:#4A463E;text-wrap:pretty">A semester diagnosing why the UNT Technical Communication site wasn't reaching its audience — and four prioritized fixes grounded in research, not opinion.</p>
+          </div>
+        </button>
+        <button onClick="{{ goProj }}" style="text-align:left;background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;overflow:hidden;cursor:pointer;padding:0;display:flex;flex-direction:column" style-hover="border-color:#1E4B42">
+          <div style="position:relative;width:100%;aspect-ratio:16/9;background:#EAE4D8">
+            <image-slot id="home-feat-2" shape="rect" src="assets/tirzah-collage.png" placeholder="Tirzah — event invitation or blog post"></image-slot>
+          </div>
+          <div style="padding:26px 24px 28px">
+            <p style="margin:0 0 12px;font:600 11px/1 'IBM Plex Sans';letter-spacing:0.16em;text-transform:uppercase;color:#B4552F">Case study 02 · Content &amp; fundraising</p>
+            <h3 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:26px;line-height:1.2;letter-spacing:-0.01em">Content &amp; Fundraising Strategy</h3>
+            <p style="margin:12px 0 0;font:400 16px/1.6 'IBM Plex Sans';color:#4A463E;text-wrap:pretty">Interviews turned into grant testimonials, donor emails, and impact stories for a nonprofit — plus a peer-to-peer fundraiser designed start to finish.</p>
+          </div>
+        </button>
+      </div>
+    </section>
+
+    <!-- Testimonials (shared) -->
+    <section style="margin-top:clamp(56px,8vw,96px);background:#EFEBE1;border-top:1px solid #E4DED2;border-bottom:1px solid #E4DED2">
+      <div style="max-width:1160px;margin:0 auto;padding:clamp(48px,7vw,80px) clamp(20px,5vw,48px)">
+        <h2 style="margin:0 0 34px;font-family:Newsreader,serif;font-weight:400;font-size:clamp(28px,3.4vw,40px);letter-spacing:-0.015em">What people say</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(20px,3vw,32px)">
+          <figure style="margin:0;background:#FDFCF9;border:1px solid #E1DACC;border-radius:8px;padding:32px 30px">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="#C8D5D0" aria-hidden="true"><path d="M7 6c-2.8 0-5 2.2-5 5s2.2 5 5 5c.3 0 .7 0 1-.1-.6 1.6-2 2.8-3.8 3.1v1.9c4.4-.4 7.8-4.1 7.8-8.6V11c0-2.8-2.2-5-5-5zm10 0c-2.8 0-5 2.2-5 5s2.2 5 5 5c.3 0 .7 0 1-.1-.6 1.6-2 2.8-3.8 3.1v1.9c4.4-.4 7.8-4.1 7.8-8.6V11c0-2.8-2.2-5-5-5z"></path></svg>
+            <blockquote style="margin:18px 0 0;font-family:Newsreader,serif;font-weight:300;font-size:22px;line-height:1.45;color:#2A2620;text-wrap:pretty">Emilie is creative, pays attention to detail, and goes the extra mile. She has a good eye for design and writes in a style that is efficient, without being too wordy. She is a quick learner and takes on new projects with enthusiasm.</blockquote>
+            <figcaption style="margin-top:22px;padding-top:18px;border-top:1px solid #E9E3D6;font:500 14px/1.5 'IBM Plex Sans';color:#2E2A24">Dianne Sivulka<span style="display:block;font-weight:400;color:#7A756A">Owner · Travel on Purpose</span></figcaption>
+          </figure>
+          <figure style="margin:0;background:#FDFCF9;border:1px solid #E1DACC;border-radius:8px;padding:32px 30px">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="#C8D5D0" aria-hidden="true"><path d="M7 6c-2.8 0-5 2.2-5 5s2.2 5 5 5c.3 0 .7 0 1-.1-.6 1.6-2 2.8-3.8 3.1v1.9c4.4-.4 7.8-4.1 7.8-8.6V11c0-2.8-2.2-5-5-5zm10 0c-2.8 0-5 2.2-5 5s2.2 5 5 5c.3 0 .7 0 1-.1-.6 1.6-2 2.8-3.8 3.1v1.9c4.4-.4 7.8-4.1 7.8-8.6V11c0-2.8-2.2-5-5-5z"></path></svg>
+            <blockquote style="margin:18px 0 0;font-family:Newsreader,serif;font-weight:300;font-size:22px;line-height:1.45;color:#2A2620;text-wrap:pretty">Emilie is amazingly gentle yet encouraging with students. She has a great relaxed atmosphere in her sessions, with laughter frequently echoing from their room, while students are regularly challenged in a variety of ways.</blockquote>
+            <figcaption style="margin-top:22px;padding-top:18px;border-top:1px solid #E9E3D6;font:500 14px/1.5 'IBM Plex Sans';color:#2E2A24">Kate Johnson<span style="display:block;font-weight:400;color:#7A756A">Learning Commons Managing Associate, Supplemental Instruction · Tarrant County College</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  </sc-if>
+
+  <!-- ══════════════ EXPERIENCE ══════════════ -->
+  <sc-if value="{{ isExp }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width:1160px;margin:0 auto;padding:clamp(48px,7vw,88px) clamp(20px,5vw,48px) clamp(64px,9vw,112px)">
+    <p style="margin:0 0 18px;font:600 11px/1 'IBM Plex Sans';letter-spacing:0.18em;text-transform:uppercase;color:#1E4B42">Experience</p>
+    <h1 style="margin:0;max-width:22ch;font-family:Newsreader,serif;font-weight:300;font-size:clamp(38px,5.6vw,68px);line-height:1.02;letter-spacing:-0.025em">Where I've done the work</h1>
+    <p style="margin:20px 0 0;max-width:60ch;font:400 17px/1.68 'IBM Plex Sans';color:#4A463E">Reverse-chronological, with what each role actually taught me rather than every task I touched.</p>
+
+    <div style="margin-top:clamp(40px,6vw,64px);position:relative;padding-left:clamp(0px,3vw,28px)">
+      <div style="position:absolute;left:calc(clamp(0px,3vw,28px) + 19px);top:14px;bottom:14px;width:1px;background:#E0D9CB"></div>
+
+      <article style="position:relative;display:grid;grid-template-columns:40px 1fr;gap:clamp(20px,3vw,36px);padding-bottom:clamp(32px,4vw,48px)">
+        <div style="width:40px;height:40px;border-radius:50%;background:#1E4B42;display:flex;align-items:center;justify-content:center;z-index:1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F7F4EE" stroke-width="1.8" aria-hidden="true"><path d="M4 5h16v14H4z"></path><path d="M8 9h8M8 13h5"></path></svg>
+        </div>
+        <div style="background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;padding:28px clamp(22px,3vw,32px) 30px">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px">
+            <div>
+              <h2 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:clamp(24px,2.6vw,30px);line-height:1.2">Content Creator</h2>
+              <p style="margin:6px 0 0;font:500 15px/1.4 'IBM Plex Sans';color:#1E4B42">Travel on Purpose · Bonsall, CA (remote)</p>
+            </div>
+            <p style="margin:0;font:500 13px/1 'IBM Plex Sans';letter-spacing:0.04em;color:#1E4B42;background:#E3EBE8;padding:8px 12px;border-radius:999px;white-space:nowrap">Aug 2024 — Present</p>
+          </div>
+          <ul style="margin:20px 0 0;padding:0;list-style:none;display:grid;gap:12px">
+            <li style="display:flex;gap:11px;align-items:flex-start"><span style="flex-shrink:0;margin-top:7px;width:5px;height:5px;border-radius:50%;background:#B4552F"></span><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Work directly with the owner to shape what the company publishes and how it looks.</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start"><span style="flex-shrink:0;margin-top:7px;width:5px;height:5px;border-radius:50%;background:#B4552F"></span><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Produce flyers, Instagram posts, curated trip booklets, infographics, and book club packets — sized correctly per platform and consistent with the brand's colors and type.</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start"><span style="flex-shrink:0;margin-top:7px;width:5px;height:5px;border-radius:50%;background:#B4552F"></span><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Researched overtourism and staying healthy while traveling, then wrote and edited blog posts on both.</span></li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Content production</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Brand consistency</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Blog writing</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Canva</span>
+          </div>
+        </div>
+      </article>
+
+      <article style="position:relative;display:grid;grid-template-columns:40px 1fr;gap:clamp(20px,3vw,36px);padding-bottom:clamp(32px,4vw,48px)">
+        <div style="width:40px;height:40px;border-radius:50%;background:#1E4B42;display:flex;align-items:center;justify-content:center;z-index:1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F7F4EE" stroke-width="1.8" aria-hidden="true"><path d="M17 20a5 5 0 00-10 0"></path><circle cx="12" cy="9" r="3.5"></circle><path d="M4 20h16"></path></svg>
+        </div>
+        <div style="background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;padding:28px clamp(22px,3vw,32px) 30px">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px">
+            <div>
+              <h2 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:clamp(24px,2.6vw,30px);line-height:1.2">Supplemental Instruction Leader</h2>
+              <p style="margin:6px 0 0;font:500 15px/1.4 'IBM Plex Sans';color:#1E4B42">Tarrant County College · Hurst, TX</p>
+            </div>
+            <p style="margin:0;font:500 13px/1 'IBM Plex Sans';letter-spacing:0.04em;color:#7A756A;background:#F1EDE3;padding:8px 12px;border-radius:999px;white-space:nowrap">Sep 2024 — May 2025</p>
+          </div>
+          <ul style="margin:20px 0 0;padding:0;list-style:none;display:grid;gap:12px">
+            <li style="display:flex;gap:11px;align-items:flex-start"><span style="flex-shrink:0;margin-top:7px;width:5px;height:5px;border-radius:50%;background:#B4552F"></span><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Designed and led hour-long study sessions three to four times a week for students struggling with course material — in person and over Microsoft Teams.</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start"><span style="flex-shrink:0;margin-top:7px;width:5px;height:5px;border-radius:50%;background:#B4552F"></span><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Wrote and distributed the session plans, and built games and visual aids to make dense topics land.</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start"><span style="flex-shrink:0;margin-top:7px;width:5px;height:5px;border-radius:50%;background:#B4552F"></span><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Coordinated with the professor each week and with other SI leaders on office-approved lesson plans.</span></li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Explaining hard things simply</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Instructional design</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Stakeholder coordination</span>
+          </div>
+        </div>
+      </article>
+
+      <article style="position:relative;display:grid;grid-template-columns:40px 1fr;gap:clamp(20px,3vw,36px);padding-bottom:clamp(32px,4vw,48px)">
+        <div style="width:40px;height:40px;border-radius:50%;background:#1E4B42;display:flex;align-items:center;justify-content:center;z-index:1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F7F4EE" stroke-width="1.8" aria-hidden="true"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path></svg>
+        </div>
+        <div style="background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;padding:28px clamp(22px,3vw,32px) 30px">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px">
+            <div>
+              <h2 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:clamp(24px,2.6vw,30px);line-height:1.2">Summer Intern</h2>
+              <p style="margin:6px 0 0;font:500 15px/1.4 'IBM Plex Sans';color:#1E4B42">Tirzah International · Los Angeles, CA</p>
+            </div>
+            <p style="margin:0;font:500 13px/1 'IBM Plex Sans';letter-spacing:0.04em;color:#7A756A;background:#F1EDE3;padding:8px 12px;border-radius:999px;white-space:nowrap">Jun — Aug 2024</p>
+          </div>
+          <ul style="margin:20px 0 0;padding:0;list-style:none;display:grid;gap:12px">
+            <li style="display:flex;gap:11px;align-items:flex-start"><span style="flex-shrink:0;margin-top:7px;width:5px;height:5px;border-radius:50%;background:#B4552F"></span><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Interviewed Emerging Leader Program participants and graduates, then turned their stories into grant testimonials, donor emails, and global impact stories for the website.</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start"><span style="flex-shrink:0;margin-top:7px;width:5px;height:5px;border-radius:50%;background:#B4552F"></span><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Wrote a full-length blog post for publication.</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start"><span style="flex-shrink:0;margin-top:7px;width:5px;height:5px;border-radius:50%;background:#B4552F"></span><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Built a peer-to-peer fundraiser end to end — plan, invitations, event schedule, and a host instruction manual.</span></li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:22px">
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Donor &amp; grant writing</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Interviewing</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Event planning</span>
+          </div>
+        </div>
+      </article>
+
+      <article style="position:relative;display:grid;grid-template-columns:40px 1fr;gap:clamp(20px,3vw,36px)">
+        <div style="width:40px;height:40px;border-radius:50%;background:#B4552F;display:flex;align-items:center;justify-content:center;z-index:1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F7F4EE" stroke-width="1.8" aria-hidden="true"><path d="M3 8l9-4 9 4-9 4z"></path><path d="M7 11v5c0 1.1 2.2 2 5 2s5-.9 5-2v-5"></path></svg>
+        </div>
+        <div style="background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;padding:28px clamp(22px,3vw,32px) 30px">
+          <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px">
+            <div>
+              <h2 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:clamp(24px,2.6vw,30px);line-height:1.2">BA, Technical Communication: Content Strategy</h2>
+              <p style="margin:6px 0 0;font:500 15px/1.4 'IBM Plex Sans';color:#1E4B42">University of North Texas · Denton, TX</p>
+            </div>
+            <p style="margin:0;font:500 13px/1 'IBM Plex Sans';letter-spacing:0.04em;color:#7A756A;background:#F1EDE3;padding:8px 12px;border-radius:999px;white-space:nowrap">Graduating 2027</p>
+          </div>
+          <ul style="margin:20px 0 0;padding:0;list-style:none;display:grid;gap:12px">
+            <li style="display:flex;gap:11px;align-items:flex-start"><span style="flex-shrink:0;margin-top:7px;width:5px;height:5px;border-radius:50%;background:#B4552F"></span><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">4.0 GPA. Coursework in content strategy, technical editing, visual technical communication, digital media, and project management.</span></li>
+            <li style="display:flex;gap:11px;align-items:flex-start"><span style="flex-shrink:0;margin-top:7px;width:5px;height:5px;border-radius:50%;background:#B4552F"></span><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Volunteer: a children's program in Keller, TX (bi-weekly) and fulfillment for Embrace Grace in Bedford, TX (weekly).</span></li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </main>
+  </sc-if>
+
+  <!-- ══════════════ PROJECTS ══════════════ -->
+  <sc-if value="{{ isProj }}" hint-placeholder-val="{{ false }}">
+  <main style="padding-bottom:clamp(64px,9vw,112px)">
+    <div style="max-width:1160px;margin:0 auto;padding:clamp(48px,7vw,88px) clamp(20px,5vw,48px) 0">
+      <p style="margin:0 0 18px;font:600 11px/1 'IBM Plex Sans';letter-spacing:0.18em;text-transform:uppercase;color:#1E4B42">Projects</p>
+      <h1 style="margin:0;max-width:24ch;font-family:Newsreader,serif;font-weight:300;font-size:clamp(38px,5.6vw,68px);line-height:1.02;letter-spacing:-0.025em">Two case studies, start to finish</h1>
+      <p style="margin:20px 0 0;max-width:62ch;font:400 17px/1.68 'IBM Plex Sans';color:#4A463E;text-wrap:pretty">Each one follows the same shape: what was broken, what I did about it, and what the results were.</p>
+    </div>
+
+        <div style="max-width:1160px;margin:0 auto;padding:0 clamp(20px,5vw,48px)">
+      <article style="margin-top:clamp(40px,6vw,64px);background:#FDFCF9;border:1px solid #E4DED2;border-radius:10px;overflow:hidden">
+        <div style="position:relative;width:100%;aspect-ratio:21/9;background:#EAE4D8">
+          <image-slot id="cs1-banner" shape="rect" src="assets/audit-view.png" placeholder="UNT project — wireframe, audit spreadsheet, or analytics view (export at 2000px wide)"></image-slot>
+        </div>
+        <div style="padding:clamp(30px,4vw,52px)">
+          <p style="margin:0 0 14px;font:600 11px/1 'IBM Plex Sans';letter-spacing:0.16em;text-transform:uppercase;color:#B4552F">Case study 01 · Semester project</p>
+          <h2 style="margin:0;max-width:26ch;font-family:Newsreader,serif;font-weight:400;font-size:clamp(30px,3.8vw,46px);line-height:1.1;letter-spacing:-0.02em">Content Strategy &amp; Website Audit</h2>
+          <p style="margin:12px 0 0;font:500 16px/1.5 'IBM Plex Sans';color:#1E4B42">UNT Technical Communication Department</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,3.5vw,44px);margin-top:clamp(28px,3.5vw,42px);padding-top:clamp(28px,3.5vw,42px);border-top:1px solid #EBE5D9">
+            <section>
+              <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B4552F" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16.5v.5"></path></svg>
+                <h3 style="margin:0;font:600 12px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#8A4526">Problem</h3>
+              </div>
+              <p style="margin:0;font:400 16px/1.68 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">The department's website wasn't clearly serving the people it was built for. I spent the semester diagnosing why — and proposing fixes grounded in research rather than opinion.</p>
+            </section>
+            <section>
+              <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg>
+                <h3 style="margin:0;font:600 12px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#1E4B42">Process</h3>
+              </div>
+              <ol style="margin:0;padding:0;list-style:none;display:grid;gap:11px;counter-reset:s">
+                <li style="display:flex;gap:11px;font:400 15px/1.6 'IBM Plex Sans';color:#3E3A33"><span style="flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#EAF0ED;color:#1E4B42;font:500 11px/20px 'IBM Plex Sans';text-align:center">1</span>Interviewed stakeholders to understand institutional goals and constraints</li>
+                <li style="display:flex;gap:11px;font:400 15px/1.6 'IBM Plex Sans';color:#3E3A33"><span style="flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#EAF0ED;color:#1E4B42;font:500 11px/20px 'IBM Plex Sans';text-align:center">2</span>Ran a full content audit across every existing page</li>
+                <li style="display:flex;gap:11px;font:400 15px/1.6 'IBM Plex Sans';color:#3E3A33"><span style="flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#EAF0ED;color:#1E4B42;font:500 11px/20px 'IBM Plex Sans';text-align:center">3</span>Compared Google Analytics behaviour against the site's assumptions about visitors</li>
+                <li style="display:flex;gap:11px;font:400 15px/1.6 'IBM Plex Sans';color:#3E3A33"><span style="flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#EAF0ED;color:#1E4B42;font:500 11px/20px 'IBM Plex Sans';text-align:center">4</span>Synthesized findings into four prioritized revision recommendations</li>
+                <li style="display:flex;gap:11px;font:400 15px/1.6 'IBM Plex Sans';color:#3E3A33"><span style="flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#EAF0ED;color:#1E4B42;font:500 11px/20px 'IBM Plex Sans';text-align:center">5</span>Built sample wireframes for two of them to make the changes concrete</li>
+              </ol>
+            </section>
+            <section>
+              <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg>
+                <h3 style="margin:0;font:600 12px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#1E4B42">Outcome</h3>
+              </div>
+              <p style="margin:0;font:400 16px/1.68 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Four ranked recommendations, two of them already drawn up as wireframes — a plan a department could act on incrementally. This was an academic capstone built to develop practical content strategy skills rather than a client engagement, so the recommendations weren’t implemented on the live site; our final deliverable earned an A.</p><a href="assets/content-strategy-plan.pdf" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:7px;margin-top:14px;font:500 15px/1 'IBM Plex Sans';color:#1E4B42" style-hover="color:#B4552F">Read the full plan (PDF)<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+                          </section>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(26px,3vw,36px);padding-top:24px;border-top:1px solid #EBE5D9">
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Content strategy</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">UX research</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Stakeholder interviews</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Data analysis</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Wireframing</span>
+          </div>
+        </div>
+      </article>
+
+      <article style="margin-top:clamp(28px,4vw,44px);background:#FDFCF9;border:1px solid #E4DED2;border-radius:10px;overflow:hidden">
+        <div style="position:relative;width:100%;aspect-ratio:21/9;background:#EAE4D8">
+          <image-slot id="cs2-banner" shape="rect" src="assets/tirzah-collage-wide.png" placeholder="Tirzah project — event invitation, host manual, or published blog post"></image-slot>
+        </div>
+        <div style="padding:clamp(30px,4vw,52px)">
+          <p style="margin:0 0 14px;font:600 11px/1 'IBM Plex Sans';letter-spacing:0.16em;text-transform:uppercase;color:#B4552F">Case study 02 · Internship portfolio</p>
+          <h2 style="margin:0;max-width:26ch;font-family:Newsreader,serif;font-weight:400;font-size:clamp(30px,3.8vw,46px);line-height:1.1;letter-spacing:-0.02em">Content &amp; Fundraising Strategy</h2>
+          <p style="margin:12px 0 0;font:500 16px/1.5 'IBM Plex Sans';color:#1E4B42">Tirzah International</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(24px,3.5vw,44px);margin-top:clamp(28px,3.5vw,42px);padding-top:clamp(28px,3.5vw,42px);border-top:1px solid #EBE5D9">
+            <section>
+              <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B4552F" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16.5v.5"></path></svg>
+                <h3 style="margin:0;font:600 12px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#8A4526">Problem</h3>
+              </div>
+              <p style="margin:0;font:400 16px/1.68 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">Tirzah International, a nonprofit empowering women globally, needed donor- and grant-facing content plus a fully planned peer-to-peer fundraiser — the kind of work a small team rarely has bandwidth for in-house.</p>
+            </section>
+            <section>
+              <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg>
+                <h3 style="margin:0;font:600 12px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#1E4B42">Process</h3>
+              </div>
+              <ol style="margin:0;padding:0;list-style:none;display:grid;gap:11px">
+                <li style="display:flex;gap:11px;font:400 15px/1.6 'IBM Plex Sans';color:#3E3A33"><span style="flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#EAF0ED;color:#1E4B42;font:500 11px/20px 'IBM Plex Sans';text-align:center">1</span>Interviewed Emerging Leader Program graduates to surface authentic testimonies</li>
+                <li style="display:flex;gap:11px;font:400 15px/1.6 'IBM Plex Sans';color:#3E3A33"><span style="flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#EAF0ED;color:#1E4B42;font:500 11px/20px 'IBM Plex Sans';text-align:center">2</span>Adapted each interview into grant testimonials, donor emails, and global impact stories</li>
+                <li style="display:flex;gap:11px;font:400 15px/1.6 'IBM Plex Sans';color:#3E3A33"><span style="flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#EAF0ED;color:#1E4B42;font:500 11px/20px 'IBM Plex Sans';text-align:center">3</span>Wrote and published a full-length blog post</li>
+                <li style="display:flex;gap:11px;font:400 15px/1.6 'IBM Plex Sans';color:#3E3A33"><span style="flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#EAF0ED;color:#1E4B42;font:500 11px/20px 'IBM Plex Sans';text-align:center">4</span>Designed a peer-to-peer fundraising event from scratch: invitations, schedule, host manual</li>
+                <li style="display:flex;gap:11px;font:400 15px/1.6 'IBM Plex Sans';color:#3E3A33"><span style="flex-shrink:0;width:20px;height:20px;border-radius:50%;background:#EAF0ED;color:#1E4B42;font:500 11px/20px 'IBM Plex Sans';text-align:center">5</span>Presented the finished project to three senior Tirzah staff for evaluation</li>
+              </ol>
+            </section>
+            <section>
+              <div style="display:flex;align-items:center;gap:9px;margin-bottom:14px">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg>
+                <h3 style="margin:0;font:600 12px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#1E4B42">Outcome</h3>
+              </div>
+              <p style="margin:0;font:400 16px/1.68 'IBM Plex Sans';color:#3E3A33;text-wrap:pretty">A ready-to-use content and fundraising kit: published writing, reusable donor and grant language drawn from real voices, and an event a volunteer host could run without me in the room. The three senior staff members I presented to responded positively, and were especially interested in adapting the concept into a virtual conference for future use. The materials weren’t used for an event that year, but the underlying idea carried forward as a direction Tirzah wanted to explore.</p>
+              <div style="margin-top:22px;padding-top:20px;border-top:1px solid #EBE5D9">
+                <p style="margin:0 0 12px;font:600 11px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#7A756A">Writing samples</p>
+                <ul style="margin:0;padding:0;list-style:none;display:grid;gap:10px">
+                  <li><a href="assets/mercy-cherono-one-pager.pdf" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:8px;font:500 15px/1.45 'IBM Plex Sans';color:#1E4B42" style-hover="color:#B4552F">Donor one-pager — Mercy Cherono<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li>
+                  <li><a href="assets/hope-uwera-one-pager.pdf" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:8px;font:500 15px/1.45 'IBM Plex Sans';color:#1E4B42" style-hover="color:#B4552F">Donor one-pager — Hope Uwera<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li>
+                  <li><a href="assets/elp-graduates-east-africa.pdf" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:8px;font:500 15px/1.45 'IBM Plex Sans';color:#1E4B42" style-hover="color:#B4552F">Emerging Leaders Program graduates, East Africa<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li>
+                  <li><a href="assets/tirzah-host-instructions.pdf" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:8px;font:500 15px/1.45 'IBM Plex Sans';color:#1E4B42" style-hover="color:#B4552F">Host instruction manual — Virtual Dinner<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a></li>
+                </ul>
+              </div>
+                          </section>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(26px,3vw,36px);padding-top:24px;border-top:1px solid #EBE5D9">
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Interviewing</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Donor &amp; grant writing</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Blog writing</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Event planning</span>
+            <span style="font:400 13px/1 'IBM Plex Sans';color:#1E4B42;background:#EAF0ED;padding:8px 12px;border-radius:5px">Presenting</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- More work (shared) -->
+    <div style="max-width:1160px;margin:0 auto;padding:clamp(52px,7vw,88px) clamp(20px,5vw,48px) 0">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-bottom:26px;border-bottom:1px solid #E4DED2">
+        <h2 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:clamp(26px,3.2vw,36px);letter-spacing:-0.015em">More work</h2>
+        <p style="margin:0;font:400 14px/1.5 'IBM Plex Sans';color:#7A756A">Shorter pieces, same care</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(18px,2.5vw,26px);margin-top:28px">
+        <div style="background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;overflow:hidden">
+          <div style="position:relative;width:100%;aspect-ratio:3/2;background:#EAE4D8">
+            <image-slot id="small-1" shape="rect" src="assets/canva-instructions-card.png" placeholder="A step from the instruction set"></image-slot>
+          </div>
+          <div style="padding:22px 20px 24px">
+            <p style="margin:0 0 9px;font:600 10px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#B4552F">Technical instructions</p>
+            <h3 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.25">How to Create an Event Flyer in Canva</h3>
+            <p style="margin:9px 0 0;font:400 15px/1.6 'IBM Plex Sans';color:#4A463E;text-wrap:pretty">A beginner-friendly, step-by-step tutorial. Because the audience was brand-new users, I built a non-pro account from scratch and screenshotted every step — so nothing assumed prior knowledge.</p>
+            <a href="assets/technical-instructions-canva.pdf" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:7px;margin-top:14px;font:500 14px/1 'IBM Plex Sans';color:#1E4B42" style-hover="color:#B4552F">Read the instructions (PDF)<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+        <div style="background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;overflow:hidden">
+          <div style="padding:26px 22px 26px">
+            <p style="margin:0 0 9px;font:600 10px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#B4552F">Blog writing · Published</p>
+            <h3 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.25">Live blog posts</h3>
+            <p style="margin:9px 0 0;font:400 15px/1.6 'IBM Plex Sans';color:#4A463E;text-wrap:pretty">Researched, reported, and edited for two organizations' real audiences.</p>
+            <ul style="margin:18px 0 0;padding:0;list-style:none;display:grid;gap:1px;background:#ECE6DA;border-top:1px solid #ECE6DA;border-bottom:1px solid #ECE6DA">
+              <li style="background:#FDFCF9"><a href="https://www.travelonpurpose.com/blog/5-tips-for-avoiding-overtourism-64351" target="_blank" rel="noreferrer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 2px;font:400 15px/1.4 'IBM Plex Sans';color:#2E2A24" style-hover="color:#1E4B42;background:#F4F1EA"><span>5 Tips for Avoiding Overtourism</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8"></path></svg></a></li>
+              <li style="background:#FDFCF9"><a href="https://www.travelonpurpose.com/blog/protecting-our-daughters-hope-for-the-future-64455" target="_blank" rel="noreferrer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 2px;font:400 15px/1.4 'IBM Plex Sans';color:#2E2A24" style-hover="color:#1E4B42;background:#F4F1EA"><span>Protecting Our Daughters: Hope for the Future</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8"></path></svg></a></li>
+              <li style="background:#FDFCF9"><a href="https://www.travelonpurpose.com/blog/ubuntu-life-a-one-way-ticket-a-friendship-and-a-question-64449" target="_blank" rel="noreferrer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 2px;font:400 15px/1.4 'IBM Plex Sans';color:#2E2A24" style-hover="color:#1E4B42;background:#F4F1EA"><span>Ubuntu Life: A One-Way Ticket, a Friendship, and a Question</span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8"></path></svg></a></li>
+              <li style="background:#FDFCF9"><a href="https://www.tirzah.org/journal/changing-cultural-norms" target="_blank" rel="noreferrer" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 2px;font:400 15px/1.4 'IBM Plex Sans';color:#2E2A24" style-hover="color:#1E4B42;background:#F4F1EA"><span>Changing Cultural Norms <span style="color:#8A857A">· Tirzah</span></span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8"></path></svg></a></li>
+            </ul>
+            <p style="margin:14px 0 0;font:400 14px/1.5 'IBM Plex Sans';color:#8A857A">Plus more on the Travel on Purpose blog.</p>
+          </div>
+        </div>
+        <div style="background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;overflow:hidden">
+          <div style="position:relative;width:100%;aspect-ratio:3/2;background:#EAE4D8">
+            <image-slot id="small-3" shape="rect" fit="contain" src="assets/keep-it-tidy-infographic.png" placeholder="The infographic poster"></image-slot>
+          </div>
+          <div style="padding:22px 20px 24px">
+            <p style="margin:0 0 9px;font:600 10px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#B4552F">Information design</p>
+            <h3 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.25">Condensing a 28-Page Thesis into One Infographic</h3>
+            <p style="margin:9px 0 0;font:400 15px/1.6 'IBM Plex Sans';color:#4A463E;text-wrap:pretty">A high school thesis on how a tidy environment supports productivity and health, distilled to a single poster — <em>Keep It Tidy</em>. I kept all three core categories and cut everything but the most impactful findings.</p>
+            <a href="assets/keep-it-tidy-infographic.png" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:7px;margin-top:14px;font:500 14px/1 'IBM Plex Sans';color:#1E4B42" style-hover="color:#B4552F">View full size<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+        <div style="background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;overflow:hidden">
+          <div style="position:relative;width:100%;aspect-ratio:3/2;background:#EAE4D8">
+            <image-slot id="small-4" shape="rect" placeholder="A page from the report"></image-slot>
+          </div>
+          <div style="padding:22px 20px 24px">
+            <p style="margin:0 0 9px;font:600 10px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#B4552F">Critical analysis</p>
+            <h3 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.25">Visual Book Report</h3>
+            <p style="margin:9px 0 0;font:400 15px/1.6 'IBM Plex Sans';color:#4A463E;text-wrap:pretty">A visual report on Sean Adams’ <em>How Design Makes Us Think</em> — its themes, a representative quote, who should read it, and an honest account of where the book gets in its own way.</p>
+            <a href="assets/visual-book-report.pdf" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:7px;margin-top:14px;font:500 14px/1 'IBM Plex Sans';color:#1E4B42" style-hover="color:#B4552F">Read the report (PDF)<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+        <div style="background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;overflow:hidden">
+          <div style="position:relative;width:100%;aspect-ratio:3/2;background:#EAE4D8">
+            <image-slot id="small-5" shape="rect" fit="contain" src="assets/event-poster-landscape.png" placeholder="The finished flyer"></image-slot>
+          </div>
+          <div style="padding:22px 20px 24px">
+            <p style="margin:0 0 9px;font:600 10px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#B4552F">Visual design</p>
+            <h3 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.25">Event Flyer — Research-Driven Layout</h3>
+            <p style="margin:9px 0 0;font:400 15px/1.6 'IBM Plex Sans';color:#4A463E;text-wrap:pretty">For the UNT Health Literacy Collaborative Summit: I pinned down the event’s purpose and must-include details, chose imagery that read as health and wellbeing, then grouped information along the "F" eye-tracking pattern.</p>
+            <a href="assets/event-poster.png" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:7px;margin-top:14px;font:500 14px/1 'IBM Plex Sans';color:#1E4B42" style-hover="color:#B4552F">See the portrait version<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+        <div style="background:#FDFCF9;border:1px solid #E4DED2;border-radius:8px;overflow:hidden">
+          <div style="position:relative;width:100%;aspect-ratio:3/2;background:#EAE4D8">
+            <image-slot id="doc-redesign" shape="rect" src="assets/document-redesign.png" placeholder="Before / after spread"></image-slot>
+          </div>
+          <div style="padding:22px 20px 24px">
+            <p style="margin:0 0 9px;font:600 10px/1 'IBM Plex Sans';letter-spacing:0.14em;text-transform:uppercase;color:#B4552F">Document design</p>
+            <h3 style="margin:0;font-family:Newsreader,serif;font-weight:400;font-size:21px;line-height:1.25">Turning a Dense Document into a Readable One</h3>
+            <p style="margin:9px 0 0;font:400 15px/1.6 'IBM Plex Sans';color:#4A463E;text-wrap:pretty">Restructured a long, text-heavy document for clarity: massive text blocks split into sections, colored headings added, prose converted to lists, white space opened up, and images, tables, and graphs added where they actually helped.</p>
+            <a href="assets/multipage-document.pdf" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:7px;margin-top:14px;font:500 14px/1 'IBM Plex Sans';color:#1E4B42" style-hover="color:#B4552F">Read the document (PDF)<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+          </div>
+        </div>
+      </div>
+      <p style="margin:26px 0 0;max-width:80ch;font:400 15px/1.7 'IBM Plex Sans';color:#7A756A;text-wrap:pretty">Also on the shelf: a topic-based help page hand-coded in DITA, a group proposal recommending a change to a UNT campus space, a rewritten home page for a pest control company, a memo comparing Coca-Cola's content strategy in the US and Guatemala, and three interview-based articles for a school paper.</p>
+
+    </div>
+  </main>
+  </sc-if>
+
+  <!-- ══════════════ RESUME ══════════════ -->
+  <sc-if value="{{ isResume }}" hint-placeholder-val="{{ false }}">
+  <main style="max-width:1160px;margin:0 auto;padding:clamp(48px,7vw,88px) clamp(20px,5vw,48px) clamp(64px,9vw,112px)">
+
+    <div>
+      <div>
+        <p style="margin:0 0 18px;font:600 11px/1 'IBM Plex Sans';letter-spacing:0.18em;text-transform:uppercase;color:#1E4B42">Resume</p>
+        <h1 style="margin:0;max-width:20ch;font-family:Newsreader,serif;font-weight:300;font-size:clamp(38px,5.4vw,64px);line-height:1.02;letter-spacing:-0.025em">The short version</h1>
+        <p style="margin:20px 0 0;max-width:52ch;font:400 17px/1.68 'IBM Plex Sans';color:#4A463E;text-wrap:pretty">Everything on this site, condensed. Grab the PDF, or email me if you'd rather just talk.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:32px">
+          <a href="./Emilie-Rezendes-Resume.pdf" download="" style="display:inline-flex;align-items:center;gap:10px;background:#1E4B42;color:#F7F4EE;padding:15px 26px;border-radius:999px;font:500 15px/1 'IBM Plex Sans'" style-hover="background:#173C35;color:#F7F4EE">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M4 21h16"></path></svg>
+            Download PDF
+          </a>
+          <a href="mailto:emilie@rezendes.com" style="display:inline-flex;align-items:center;gap:9px;border:1px solid #D8D1C3;color:#1B1A17;padding:15px 24px;border-radius:999px;font:500 15px/1 'IBM Plex Sans';white-space:nowrap" style-hover="border-color:#1E4B42;background:#EDF1EF;color:#1B1A17">Email me instead</a>
+        </div>
+        <ul style="margin:34px 0 0;padding:0;list-style:none;display:grid;gap:14px;border-top:1px solid #E4DED2;padding-top:26px">
+          <li style="display:flex;gap:12px;align-items:flex-start"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.8" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33">BA Technical Communication: Content Strategy, UNT — 4.0 GPA, graduating 2027</span></li>
+          <li style="display:flex;gap:12px;align-items:flex-start"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.8" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33">Content creator at Travel on Purpose · summer intern at Tirzah International</span></li>
+          <li style="display:flex;gap:12px;align-items:flex-start"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.8" style="flex-shrink:0;margin-top:2px" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg><span style="font:400 16px/1.6 'IBM Plex Sans';color:#3E3A33">Content audits, stakeholder interviews, and analytics on a live site</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+  </sc-if>
+
+  <footer style="border-top:1px solid #E4DED2;background:#F2EEE5">
+    <div style="max-width:1160px;margin:0 auto;padding:36px clamp(20px,5vw,48px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px">
+      <p style="margin:0;font-family:Newsreader,serif;font-size:18px;color:#1B1A17">Emilie Rezendes</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:22px">
+        <a href="mailto:emilie@rezendes.com" style="font:400 15px/1 'IBM Plex Sans'">emilie@rezendes.com</a>
+        <a href="https://www.linkedin.com/in/emilie-rezendes" target="_blank" rel="noreferrer" style="font:400 15px/1 'IBM Plex Sans'">LinkedIn</a>
+        <span style="font:400 14px/1 'IBM Plex Sans';color:#8A857A">Fort Worth, TX</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showFlags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Review&quot;}}">
+class Component extends DCLogic {
+  state = { page: 'home' };
+
+  go(page) {
+    this.setState({ page });
+    window.scrollTo(0, 0);
+  }
+
+  renderVals() {
+    const page = this.state.page;
+    return {
+      isHome: page === 'home',
+      isExp: page === 'experience',
+      isProj: page === 'projects',
+      isResume: page === 'resume',
+      goHome: () => this.go('home'),
+      goExp: () => this.go('experience'),
+      goProj: () => this.go('projects'),
+      goResume: () => this.go('resume'),
+      showFlags: this.props.showFlags !== false
+    };
+  }
+}
+
+</script>
+</body>
+</html>
