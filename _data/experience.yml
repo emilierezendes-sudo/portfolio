@@ -1,0 +1,60 @@
+# Experience timeline, newest first.
+# icon: briefcase | people | chat | cap  (small icon in the timeline marker)
+# marker: evergreen | clay  (marker circle color — clay is used for the education entry)
+# current: true puts the date pill in the darker "current" style
+- role: Content Creator
+  org: "Travel on Purpose · Bonsall, CA (remote)"
+  dates: "Aug 2024 — Present"
+  current: true
+  icon: briefcase
+  marker: evergreen
+  bullets:
+    - "Work directly with the owner to shape what the company publishes and how it looks."
+    - "Produce flyers, Instagram posts, curated trip booklets, infographics, and book club packets — sized correctly per platform and consistent with the brand's colors and type."
+    - "Researched overtourism and staying healthy while traveling, then wrote and edited blog posts on both."
+  tags:
+    - "Content production"
+    - "Brand consistency"
+    - "Blog writing"
+    - "Canva"
+
+- role: Supplemental Instruction Leader
+  org: "Tarrant County College · Hurst, TX"
+  dates: "Sep 2024 — May 2025"
+  current: false
+  icon: people
+  marker: evergreen
+  bullets:
+    - "Designed and led hour-long study sessions three to four times a week for students struggling with course material — in person and over Microsoft Teams."
+    - "Wrote and distributed the session plans, and built games and visual aids to make dense topics land."
+    - "Coordinated with the professor each week and with other SI leaders on office-approved lesson plans."
+  tags:
+    - "Explaining hard things simply"
+    - "Instructional design"
+    - "Stakeholder coordination"
+
+- role: Summer Intern
+  org: "Tirzah International · Los Angeles, CA"
+  dates: "Jun — Aug 2024"
+  current: false
+  icon: chat
+  marker: evergreen
+  bullets:
+    - "Interviewed Emerging Leader Program participants and graduates, then turned their stories into grant testimonials, donor emails, and global impact stories for the website."
+    - "Wrote a full-length blog post for publication."
+    - "Built a peer-to-peer fundraiser end to end — plan, invitations, event schedule, and a host instruction manual."
+  tags:
+    - "Donor & grant writing"
+    - "Interviewing"
+    - "Event planning"
+
+- role: "BA, Technical Communication: Content Strategy"
+  org: "University of North Texas · Denton, TX"
+  dates: "Graduating 2027"
+  current: false
+  icon: cap
+  marker: clay
+  bullets:
+    - "4.0 GPA. Coursework in content strategy, technical editing, visual technical communication, digital media, and project management."
+    - "Volunteer: a children's program in Keller, TX (bi-weekly) and fulfillment for Embrace Grace in Bedford, TX (weekly)."
+  tags: []

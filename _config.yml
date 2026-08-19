@@ -1,0 +1,21 @@
+title: Emilie Rezendes
+description: Technical writer and content strategist in the making.
+email: emilie@rezendes.com
+linkedin: https://www.linkedin.com/in/emilie-rezendes
+location: "Fort Worth, TX"
+
+# This must match your GitHub Pages project-page path (https://<user>.github.io/<repo>/).
+# If you ever rename the "portfolio" repo, update this to match, or the site's CSS/images/links
+# will all point to the wrong place.
+baseurl: "/portfolio"
+
+permalink: pretty
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Files/folders Jekyll should not try to publish as pages.
+exclude:
+  - README.md
+  - CLAUDE.md

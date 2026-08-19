@@ -1,0 +1,65 @@
+# Full case studies — power both the Projects page (full detail) and the two
+# "Selected work" teaser cards on the Home page (title, home_teaser, home_image).
+- slug: audit
+  number: "01"
+  context: "Semester project"
+  category: "Content strategy"
+  title: "Content Strategy & Website Audit"
+  org: "UNT Technical Communication Department"
+  banner: assets/audit-view.png
+  banner_alt: "UNT project — wireframe, audit spreadsheet, or analytics view"
+  home_image: assets/audit-view.png
+  home_teaser: "A semester diagnosing why the UNT Technical Communication site wasn't reaching its audience — and four prioritized fixes grounded in research, not opinion."
+  problem: "The department's website wasn't clearly serving the people it was built for. I spent the semester diagnosing why — and proposing fixes grounded in research rather than opinion."
+  process:
+    - "Interviewed stakeholders to understand institutional goals and constraints"
+    - "Ran a full content audit across every existing page"
+    - "Compared Google Analytics behaviour against the site's assumptions about visitors"
+    - "Synthesized findings into four prioritized revision recommendations"
+    - "Built sample wireframes for two of them to make the changes concrete"
+  outcome: "Four ranked recommendations, two of them already drawn up as wireframes — a plan a department could act on incrementally. This was an academic capstone built to develop practical content strategy skills rather than a client engagement, so the recommendations weren't implemented on the live site; our final deliverable earned an A."
+  outcome_link:
+    label: "Read the full plan (PDF)"
+    url: assets/content-strategy-plan.pdf
+  writing_samples: []
+  tags:
+    - "Content strategy"
+    - "UX research"
+    - "Stakeholder interviews"
+    - "Data analysis"
+    - "Wireframing"
+
+- slug: tirzah
+  number: "02"
+  context: "Internship portfolio"
+  category: "Content & fundraising"
+  title: "Content & Fundraising Strategy"
+  org: "Tirzah International"
+  banner: assets/tirzah-collage-wide.png
+  banner_alt: "Tirzah project — event invitation, host manual, or published blog post"
+  home_image: assets/tirzah-collage.png
+  home_teaser: "Interviews turned into grant testimonials, donor emails, and impact stories for a nonprofit — plus a peer-to-peer fundraiser designed start to finish."
+  problem: "Tirzah International, a nonprofit empowering women globally, needed donor- and grant-facing content plus a fully planned peer-to-peer fundraiser — the kind of work a small team rarely has bandwidth for in-house."
+  process:
+    - "Interviewed Emerging Leader Program graduates to surface authentic testimonies"
+    - "Adapted each interview into grant testimonials, donor emails, and global impact stories"
+    - "Wrote and published a full-length blog post"
+    - "Designed a peer-to-peer fundraising event from scratch: invitations, schedule, host manual"
+    - "Presented the finished project to three senior Tirzah staff for evaluation"
+  outcome: "A ready-to-use content and fundraising kit: published writing, reusable donor and grant language drawn from real voices, and an event a volunteer host could run without me in the room. The three senior staff members I presented to responded positively, and were especially interested in adapting the concept into a virtual conference for future use. The materials weren't used for an event that year, but the underlying idea carried forward as a direction Tirzah wanted to explore."
+  outcome_link: null
+  writing_samples:
+    - label: "Donor one-pager — Mercy Cherono"
+      url: assets/mercy-cherono-one-pager.pdf
+    - label: "Donor one-pager — Hope Uwera"
+      url: assets/hope-uwera-one-pager.pdf
+    - label: "Emerging Leaders Program graduates, East Africa"
+      url: assets/elp-graduates-east-africa.pdf
+    - label: "Host instruction manual — Virtual Dinner"
+      url: assets/tirzah-host-instructions.pdf
+  tags:
+    - "Interviewing"
+    - "Donor & grant writing"
+    - "Blog writing"
+    - "Event planning"
+    - "Presenting"

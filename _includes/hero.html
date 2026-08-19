@@ -1,0 +1,24 @@
+<section class="section hero">
+  <div class="hero__grid">
+    <div>
+      <p class="eyebrow">{{ page.eyebrow }}</p>
+      <h1 class="display-1">{{ page.hero_name }}</h1>
+      <p class="hero__tagline">{{ page.tagline }}</p>
+      <p class="hero__bio">{{ page.bio }}</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="mailto:{{ site.email }}">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="M2 7l10 6 10-6"></path></svg>
+          Email me
+        </a>
+        <a class="btn btn--secondary" href="{{ site.linkedin }}" target="_blank" rel="noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="#1E4B42" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95C20.4 8.75 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.56-2.3 3.2V21H9z"></path></svg>
+          LinkedIn
+        </a>
+        <a class="btn--link" href="{{ '/resume/' | relative_url }}">Download resume</a>
+      </div>
+    </div>
+    <div class="hero__portrait">
+      <img src="{{ page.portrait | relative_url }}" alt="Emilie Rezendes" loading="eager">
+    </div>
+  </div>
+</section>

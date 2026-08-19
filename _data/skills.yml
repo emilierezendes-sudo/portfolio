@@ -1,0 +1,30 @@
+# Skills grid on the Home page.
+# icon: core | research | tools | also  (controls which small icon shows)
+- title: Core
+  icon: core
+  items:
+    - "Content strategy"
+    - "Technical & instructional writing"
+    - "Technical editing"
+    - "Web & UX copy"
+- title: "Research & analysis"
+  icon: research
+  items:
+    - "Stakeholder interviews"
+    - "Content audits"
+    - "Google Analytics"
+    - "Personas & editorial calendars"
+- title: Tools
+  icon: tools
+  items:
+    - "Canva & Microsoft Word — advanced"
+    - "PowerPoint, Excel, Trello — intermediate"
+    - "WordPress, Asana, HTML, DITA — working"
+    - "APA & Chicago style"
+- title: Also
+  icon: also
+  items:
+    - "Grant & donor writing"
+    - "Blog & web publishing"
+    - "Event planning"
+    - "Visual communication design"

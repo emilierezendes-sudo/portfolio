@@ -1,0 +1,71 @@
+<div class="container">
+  {% for project in site.data.projects %}
+  <article class="case-study">
+    <div class="case-study__banner">
+      <img src="{{ project.banner | relative_url }}" alt="{{ project.banner_alt }}" loading="lazy">
+    </div>
+    <div class="case-study__body">
+      <p class="eyebrow eyebrow--clay">Case study {{ project.number }} · {{ project.context }}</p>
+      <h2 class="case-study__title">{{ project.title }}</h2>
+      <p class="case-study__org">{{ project.org }}</p>
+
+      <div class="case-study__cols">
+        <section class="case-col">
+          <div class="case-col__head case-col__head--problem">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B4552F" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5M12 16.5v.5"></path></svg>
+            <h3>Problem</h3>
+          </div>
+          <p>{{ project.problem }}</p>
+        </section>
+
+        <section class="case-col">
+          <div class="case-col__head">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"></path></svg>
+            <h3>Process</h3>
+          </div>
+          <ol class="case-process">
+            {% for step in project.process %}
+            <li><span class="case-process__num">{{ forloop.index }}</span>{{ step }}</li>
+            {% endfor %}
+          </ol>
+        </section>
+
+        <section class="case-col">
+          <div class="case-col__head">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="1.8" aria-hidden="true"><path d="M20 6L9 17l-5-5"></path></svg>
+            <h3>Outcome</h3>
+          </div>
+          <p>{{ project.outcome }}</p>
+          {% if project.outcome_link %}
+          <a href="{{ project.outcome_link.url | relative_url }}" target="_blank" rel="noreferrer" class="inline-link" style="margin-top:14px">
+            {{ project.outcome_link.label }}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+          </a>
+          {% endif %}
+          {% if project.writing_samples.size > 0 %}
+          <div class="case-writing-samples">
+            <p class="eyebrow eyebrow--muted" style="margin-bottom:12px">Writing samples</p>
+            <ul>
+              {% for sample in project.writing_samples %}
+              <li>
+                <a href="{{ sample.url | relative_url }}" target="_blank" rel="noreferrer" class="inline-link">
+                  {{ sample.label }}
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+        </section>
+      </div>
+
+      <div class="case-study__tags">
+        {% for tag in project.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </article>
+  {% endfor %}
+</div>

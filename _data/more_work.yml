@@ -1,0 +1,73 @@
+# The "More work" card grid on the Projects page.
+# type: card (image + description + one link) | list (a card of links, e.g. the blog card)
+# fit: cover (fills the frame, default) | contain (shows the whole image, for posters/infographics)
+- type: card
+  label: "Technical instructions"
+  title: "How to Create an Event Flyer in Canva"
+  desc: "A beginner-friendly, step-by-step tutorial. Because the audience was brand-new users, I built a non-pro account from scratch and screenshotted every step — so nothing assumed prior knowledge."
+  image: assets/canva-instructions-card.png
+  image_alt: "A step from the instruction set"
+  fit: cover
+  link:
+    label: "Read the instructions (PDF)"
+    url: assets/technical-instructions-canva.pdf
+
+- type: list
+  label: "Blog writing · Published"
+  title: "Live blog posts"
+  desc: "Researched, reported, and edited for two organizations' real audiences."
+  links:
+    - label: "5 Tips for Avoiding Overtourism"
+      url: "https://www.travelonpurpose.com/blog/5-tips-for-avoiding-overtourism-64351"
+    - label: "Protecting Our Daughters: Hope for the Future"
+      url: "https://www.travelonpurpose.com/blog/protecting-our-daughters-hope-for-the-future-64455"
+    - label: "Ubuntu Life: A One-Way Ticket, a Friendship, and a Question"
+      url: "https://www.travelonpurpose.com/blog/ubuntu-life-a-one-way-ticket-a-friendship-and-a-question-64449"
+    - label: "Changing Cultural Norms"
+      source: "Tirzah"
+      url: "https://www.tirzah.org/journal/changing-cultural-norms"
+  note: "Plus more on the Travel on Purpose blog."
+
+- type: card
+  label: "Information design"
+  title: "Condensing a 28-Page Thesis into One Infographic"
+  desc: 'A high school thesis on how a tidy environment supports productivity and health, distilled to a single poster — <em>Keep It Tidy</em>. I kept all three core categories and cut everything but the most impactful findings.'
+  image: assets/keep-it-tidy-infographic.png
+  image_alt: "The infographic poster"
+  fit: contain
+  link:
+    label: "View full size"
+    url: assets/keep-it-tidy-infographic.png
+
+- type: card
+  label: "Critical analysis"
+  title: "Visual Book Report"
+  desc: 'A visual report on Sean Adams’ <em>How Design Makes Us Think</em> — its themes, a representative quote, who should read it, and an honest account of where the book gets in its own way.'
+  image: assets/visual-book-report-thumb.webp
+  image_alt: "A page from the report"
+  fit: cover
+  link:
+    label: "Read the report (PDF)"
+    url: assets/visual-book-report.pdf
+
+- type: card
+  label: "Visual design"
+  title: "Event Flyer — Research-Driven Layout"
+  desc: 'For the UNT Health Literacy Collaborative Summit: I pinned down the event’s purpose and must-include details, chose imagery that read as health and wellbeing, then grouped information along the "F" eye-tracking pattern.'
+  image: assets/event-poster-landscape.png
+  image_alt: "The finished flyer"
+  fit: contain
+  link:
+    label: "See the portrait version"
+    url: assets/event-poster.png
+
+- type: card
+  label: "Document design"
+  title: "Turning a Dense Document into a Readable One"
+  desc: "Restructured a long, text-heavy document for clarity: massive text blocks split into sections, colored headings added, prose converted to lists, white space opened up, and images, tables, and graphs added where they actually helped."
+  image: assets/document-redesign.png
+  image_alt: "Before / after spread"
+  fit: cover
+  link:
+    label: "Read the document (PDF)"
+    url: assets/multipage-document.pdf

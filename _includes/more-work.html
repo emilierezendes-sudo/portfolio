@@ -1,0 +1,46 @@
+<div class="container" style="padding-top:clamp(52px,7vw,88px)">
+  <div class="section__head section__head--tight">
+    <h2 class="section-title section-title--sm">More work</h2>
+    <p class="section__meta">Shorter pieces, same care</p>
+  </div>
+  <div class="more-work-grid">
+    {% for item in site.data.more_work %}
+    {% if item.type == 'list' %}
+    <div class="more-work-card">
+      <div class="more-work-card__body">
+        <p class="eyebrow eyebrow--clay-sm">{{ item.label }}</p>
+        <h3 class="more-work-card__title">{{ item.title }}</h3>
+        <p class="more-work-card__desc">{{ item.desc }}</p>
+        <ul class="blog-list">
+          {% for link in item.links %}
+          <li>
+            <a href="{{ link.url }}" target="_blank" rel="noreferrer">
+              <span>{{ link.label }}{% if link.source %} <span class="source">· {{ link.source }}</span>{% endif %}</span>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1E4B42" stroke-width="2" style="flex-shrink:0" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8"></path></svg>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% if item.note %}<p class="blog-list__more">{{ item.note }}</p>{% endif %}
+      </div>
+    </div>
+    {% else %}
+    <div class="more-work-card">
+      <div class="more-work-card__media{% if item.fit == 'contain' %} more-work-card__media--contain{% endif %}">
+        <img src="{{ item.image | relative_url }}" alt="{{ item.image_alt }}" loading="lazy">
+      </div>
+      <div class="more-work-card__body">
+        <p class="eyebrow eyebrow--clay-sm">{{ item.label }}</p>
+        <h3 class="more-work-card__title">{{ item.title }}</h3>
+        <p class="more-work-card__desc">{{ item.desc }}</p>
+        <a href="{{ item.link.url | relative_url }}" target="_blank" rel="noreferrer" class="inline-link inline-link--sm" style="margin-top:14px">
+          {{ item.link.label }}
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <p class="prose-note">{{ page.shelf_note }}</p>
+</div>

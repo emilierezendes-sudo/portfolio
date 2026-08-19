@@ -1,0 +1,23 @@
+<section class="section">
+  <div class="section__head section__head--tight">
+    <h2 class="section-title">Selected work</h2>
+    <a class="section__link" href="{{ '/projects/' | relative_url }}">
+      All projects
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+    </a>
+  </div>
+  <div class="feature-grid">
+    {% for project in site.data.projects %}
+    <a class="feature-card" href="{{ '/projects/' | relative_url }}">
+      <div class="feature-card__media">
+        <img src="{{ project.home_image | relative_url }}" alt="{{ project.banner_alt }}" loading="lazy">
+      </div>
+      <div class="feature-card__body">
+        <p class="eyebrow eyebrow--clay">Case study {{ project.number }} · {{ project.category }}</p>
+        <h3 class="feature-card__title">{{ project.title }}</h3>
+        <p class="feature-card__desc">{{ project.home_teaser }}</p>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
