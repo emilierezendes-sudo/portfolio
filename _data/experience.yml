@@ -1,12 +1,12 @@
 # Experience timeline, newest first.
-# icon: briefcase | people | chat | cap  (small icon in the timeline marker)
+# icon: briefcase | people | chat | cap | pencil  (small icon in the timeline marker)
 # marker: evergreen | clay  (marker circle color — clay is used for the education entry)
 # current: true puts the date pill in the darker "current" style
 - role: Technical Writing Intern
-  org: "Proficium"
+  org: "Proficium · San Francisco, CA (remote)"
   dates: "Jun — Aug 2026"
   current: false
-  icon: briefcase
+  icon: pencil
   marker: evergreen
   bullets:
     - "Worked on more than 26 Standard Operating Procedures (SOPs) for the Design and Engineering Department."
