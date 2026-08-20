@@ -2,6 +2,24 @@
 # icon: briefcase | people | chat | cap  (small icon in the timeline marker)
 # marker: evergreen | clay  (marker circle color — clay is used for the education entry)
 # current: true puts the date pill in the darker "current" style
+- role: Technical Writing Intern
+  org: "Proficium"
+  dates: "Jun — Aug 2026"
+  current: false
+  icon: briefcase
+  marker: evergreen
+  bullets:
+    - "Worked on more than 26 Standard Operating Procedures (SOPs) for the Design and Engineering Department."
+    - "Standardized formatting and structure for consistency across documents."
+    - "Refined existing procedures for clarity where needed."
+    - "Created Markdown (MD) templates for future ease of document formatting."
+    - "Worked with other departments to help build their knowledge of company products."
+  tags:
+    - "Technical writing"
+    - "SOP documentation"
+    - "Process standardization"
+    - "Markdown"
+
 - role: Content Creator
   org: "Travel on Purpose · Bonsall, CA (remote)"
   dates: "Aug 2024 — Present"
